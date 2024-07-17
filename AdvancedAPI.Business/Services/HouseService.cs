@@ -1,4 +1,6 @@
-﻿using AdvancedAPI.Data.ViewModels.Houses;
+﻿using AdvancedAPI.Data.Models;
+using AdvancedAPI.Data.Repositories.Interfaces;
+using AdvancedAPI.Data.ViewModels.Houses;
 using Business.Services.Interfaces;
 
 namespace Business.Services;
@@ -6,16 +8,26 @@ namespace Business.Services;
 /// <inheritdoc />
 public class HouseService: IHouseService
 {
+
+    private readonly IHouseRepository _houseRepository;
     /// <summary>
     /// Constructor.
     /// </summary>
-    public HouseService()
+    public HouseService(IHouseRepository houseRepository)
     {
+        _houseRepository = houseRepository;
     }
 
     /// <inheritdoc />
-    public Task<List<HouseResponseModel>> GetAllHouses(CancellationToken cancellationToken)
+    public async Task<List<HouseResponseModel>?> GetAllHouses(CancellationToken cancellationToken)
     {
-        return Task.FromResult(new List<HouseResponseModel>());
+        List<House> houses = await _houseRepository.GetAllHouses();
+
+        if (!houses.Any())
+        {
+            return null;
+        }
+
+        return new List<HouseResponseModel>();
     }
 }

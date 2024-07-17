@@ -10,5 +10,5 @@ public interface IHouseService
     /// <summary>
     /// Obtaining List of all  houses
     /// </summary>
-    public Task<List<HouseResponseModel>> GetAllHouses(CancellationToken ct = default);
+    public Task<List<HouseResponseModel>?> GetAllHouses(CancellationToken ct = default);
 }
