@@ -11,6 +11,6 @@ public class HouseResponseModel
     /// <summary>
     /// Name of the street where the house is located.
     /// </summary>
-    [JsonProperty("street Name")] 
-    public string StreetName { get; set; } = String.Empty;
+    [JsonProperty("street Name")]
+    public string StreetName { get; set; } = string.Empty;
 }

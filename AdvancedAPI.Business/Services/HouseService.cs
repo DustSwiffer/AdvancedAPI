@@ -6,10 +6,10 @@ using Business.Services.Interfaces;
 namespace Business.Services;
 
 /// <inheritdoc />
-public class HouseService: IHouseService
+public class HouseService : IHouseService
 {
-
     private readonly IHouseRepository _houseRepository;
+
     /// <summary>
     /// Constructor.
     /// </summary>

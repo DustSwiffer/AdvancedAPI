@@ -11,9 +11,9 @@ builder.Services.AddSwaggerGen(c =>
     {
         Title = "AdvancedAPI",
         Version = "v1",
-        Description = "The Advanced API of DustSwiffer"
+        Description = "The Advanced API of DustSwiffer",
     });
-    
+
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
@@ -25,6 +25,7 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
+
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }

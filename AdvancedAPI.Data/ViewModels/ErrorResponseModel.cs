@@ -1,8 +1,17 @@
-namespace AdvancedAPI.Models;
+namespace AdvancedAPI.Data.ViewModels;
 
+/// <summary>
+/// Error response model. Will be sent to the requester.
+/// </summary>
 public class ErrorResponseModel
 {
-    public string? RequestId { get; set; }
+    /// <summary>
+    /// Status code of the error.
+    /// </summary>
+    public int Code { get; set; }
 
-    public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    /// <summary>
+    /// Message of the error.
+    /// </summary>
+    public string Message { get; set; } = string.Empty;
 }

@@ -1,14 +1,23 @@
 namespace Business;
 
+/// <summary>
+/// Default.
+/// </summary>
 public class Worker : BackgroundService
 {
     private readonly ILogger<Worker> _logger;
 
+    /// <summary>
+    /// Default.
+    /// </summary>
     public Worker(ILogger<Worker> logger)
     {
         _logger = logger;
     }
 
+    /// <summary>
+    /// Default.
+    /// </summary>
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         while (!stoppingToken.IsCancellationRequested)

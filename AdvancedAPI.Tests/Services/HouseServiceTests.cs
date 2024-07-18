@@ -15,6 +15,7 @@ public class HouseServiceTests
 {
     private readonly IHouseService _houseService;
     private readonly Mock<IHouseRepository> _houseRepository;
+
     /// <summary>
     /// Constructor.
     /// </summary>
@@ -32,18 +33,19 @@ public class HouseServiceTests
     public async Task GetAllHousesReturnsNull()
     {
         _houseRepository.Setup(x => x.GetAllHouses()).ReturnsAsync(new List<House>());
-        var result = await _houseService.GetAllHouses();
-        Assert.Equal(null, result);
+        List<HouseResponseModel>? result = await _houseService.GetAllHouses();
+
+        Assert.Null(result);
     }
-    
+
     /// <summary>
     /// Tests if <see cref="HouseService.GetAllHouses"/> returns a valid list.
     /// </summary>
     [Fact]
     public async Task GetAllHousesReturnsList()
     {
-        _houseRepository.Setup(x => x.GetAllHouses()).ReturnsAsync(new List<House>{new()});
-        var result = await _houseService.GetAllHouses();
+        _houseRepository.Setup(x => x.GetAllHouses()).ReturnsAsync(new List<House> { new() });
+        List<HouseResponseModel>? result = await _houseService.GetAllHouses();
         Assert.Equal(new List<HouseResponseModel>(), result);
     }
 }

@@ -1,12 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedAPI", "AdvancedAPI\AdvancedAPI.csproj", "{C8B1A7A2-655B-4CC4-83B8-317E47737D64}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdvancedAPI", "AdvancedAPI\AdvancedAPI.csproj", "{C8B1A7A2-655B-4CC4-83B8-317E47737D64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedAPI.Tests", "AdvancedAPI.Tests\AdvancedAPI.Tests.csproj", "{68B1C0FF-763F-49DC-B214-1EA6687BC8BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdvancedAPI.Tests", "AdvancedAPI.Tests\AdvancedAPI.Tests.csproj", "{68B1C0FF-763F-49DC-B214-1EA6687BC8BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedAPI.Business", "AdvancedAPI.Business\AdvancedAPI.Business.csproj", "{5B50610A-4319-4A94-B572-C206F2D4854C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdvancedAPI.Business", "AdvancedAPI.Business\AdvancedAPI.Business.csproj", "{5B50610A-4319-4A94-B572-C206F2D4854C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedAPI.Data", "AdvancedAPI.Data\AdvancedAPI.Data.csproj", "{00677115-7649-43C1-BDA6-27F403170575}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdvancedAPI.Data", "AdvancedAPI.Data\AdvancedAPI.Data.csproj", "{00677115-7649-43C1-BDA6-27F403170575}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{086D46AA-3EB5-4C94-980B-F9DDCE428E3F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +38,8 @@ Global
 		{00677115-7649-43C1-BDA6-27F403170575}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00677115-7649-43C1-BDA6-27F403170575}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00677115-7649-43C1-BDA6-27F403170575}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
