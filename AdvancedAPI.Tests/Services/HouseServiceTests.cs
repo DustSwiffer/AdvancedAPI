@@ -32,7 +32,7 @@ public class HouseServiceTests
     [Fact]
     public async Task GetAllHousesReturnsNull()
     {
-        _houseRepository.Setup(x => x.GetAllHouses()).ReturnsAsync(new List<House>());
+        _houseRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(new List<House>());
         List<HouseResponseModel>? result = await _houseService.GetAllHouses();
 
         Assert.Null(result);
@@ -44,7 +44,7 @@ public class HouseServiceTests
     [Fact]
     public async Task GetAllHousesReturnsList()
     {
-        _houseRepository.Setup(x => x.GetAllHouses()).ReturnsAsync(new List<House> { new() });
+        _houseRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(new List<House> { new() });
         List<HouseResponseModel>? result = await _houseService.GetAllHouses();
         Assert.Equal(new List<HouseResponseModel>(), result);
     }

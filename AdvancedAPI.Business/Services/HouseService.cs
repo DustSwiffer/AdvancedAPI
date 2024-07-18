@@ -21,7 +21,7 @@ public class HouseService : IHouseService
     /// <inheritdoc />
     public async Task<List<HouseResponseModel>?> GetAllHouses(CancellationToken cancellationToken)
     {
-        List<House> houses = await _houseRepository.GetAllHouses();
+        IEnumerable<House> houses = await _houseRepository.GetAllAsync();
 
         if (!houses.Any())
         {
