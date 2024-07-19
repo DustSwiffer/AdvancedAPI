@@ -25,8 +25,7 @@
       "systemUsingDirectivesFirst": true
     },
     "namingRules": {
-      "allowCommonHungarianPrefixes": true,
-
+      "allowCommonHungarianPrefixes": true
     },
     "layoutRules": {
       "newlineAtEndOfFile": "require"

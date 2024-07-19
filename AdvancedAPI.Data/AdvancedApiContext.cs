@@ -1,4 +1,5 @@
-﻿using AdvancedAPI.Data.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdvancedAPI.Data;
@@ -6,7 +7,7 @@ namespace AdvancedAPI.Data;
 /// <summary>
 /// Database context.
 /// </summary>
-public class AdvancedApiContext : DbContext
+public class AdvancedApiContext : IdentityDbContext<IdentityUser>
 {
     /// <summary>
     /// Constructor.
@@ -15,9 +16,4 @@ public class AdvancedApiContext : DbContext
         : base(options)
     {
     }
-
-    /// <summary>
-    /// DbSet of <see cref="House"/>.
-    /// </summary>
-    public DbSet<House> Houses { get; set; }
 }

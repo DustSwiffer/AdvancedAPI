@@ -1,4 +1,5 @@
-﻿using AdvancedAPI.Data.ViewModels;
+﻿using AdvancedAPI.BaseControllers;
+using AdvancedAPI.Data.ViewModels;
 using AdvancedAPI.Data.ViewModels.Houses;
 using Business.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -8,9 +9,8 @@ namespace AdvancedAPI.Controllers;
 /// <summary>
 /// House api provided operation to main the houses.
 /// </summary>
-[ApiController]
-[Route("api/house")]
-public class HouseController : ControllerBase
+[Route("house")]
+public class HouseController : BaseController
 {
     private readonly IHouseService _houseService;
 
@@ -35,12 +35,7 @@ public class HouseController : ControllerBase
 
         if (houseResponseModels == null || !houseResponseModels.Any())
         {
-            return NotFound(
-                new ErrorResponseModel
-                {
-                    Code = 404,
-                    Message = "No houses found",
-                });
+            return NotFoundResult("Could not find any houses");
         }
 
         return Ok(new List<HouseResponseModel>());
