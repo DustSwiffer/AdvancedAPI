@@ -1,0 +1,61 @@
+﻿{
+  "settings": {
+    "documentationRules": {
+      "xmlHeader": true,
+      "documentExposedElements": true,
+      "documentInternalElements": false,
+      "documentPrivateElements": false,
+      "documentInterfaces": false,
+      "documentPrivateFields": false,
+      "documentPrivateFieldsInPartialClass": false,
+      "documentProtectedElements": true,
+      "documentProtectedInternalElements": true,
+      "documentProtectedInternalFields": true,
+      "documentConstructors": true,
+      "documentDispose": true,
+      "documentOverrides": true,
+      "documentMethods": true,
+      "documentProperties": true,
+      "documentEvents": true,
+      "documentFields": true,
+      "documentTypes": true
+    },
+    "orderingRules": {
+      "usingDirectivesPlacement": "outsideNamespace",
+      "systemUsingDirectivesFirst": true
+    },
+    "namingRules": {
+      "allowCommonHungarianPrefixes": true,
+
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "require"
+    }
+  },
+  "rules": {
+    "SA1309": {
+      "enabled": false
+    },
+    "SA1633": {
+      "enabled": false
+    },
+    "SA1404": {
+      "enabled": false
+    },
+    "SA1101": {
+      "enabled": false
+    },
+    "SA1611": {
+      "enabled": false
+    },
+    "SA1615": {
+      "enabled": false
+    },
+    "SA1642": {
+      "enabled": false
+    },
+    "SA1623": {
+      "enabled": false
+    }
+  }
+}
