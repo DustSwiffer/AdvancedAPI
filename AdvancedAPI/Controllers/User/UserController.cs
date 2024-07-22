@@ -1,8 +1,4 @@
-﻿// <copyright file="UserController.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
-
-using AdvancedAPI.BaseControllers;
+﻿using AdvancedAPI.BaseControllers;
 using AdvancedAPI.Data.ViewModels.User;
 using Business.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;

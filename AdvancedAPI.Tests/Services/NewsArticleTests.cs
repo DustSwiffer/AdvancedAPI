@@ -62,7 +62,7 @@ public class NewsArticleTests
         _newsArticleRepository.Setup(r => r.AddAsync(It.IsAny<NewsArticle>())).Returns(Task.CompletedTask);
         _newsArticleRepository.Setup(r => r.SaveAsync()).Throws(It.IsAny<Exception>());
 
-        var exception = await Assert.ThrowsAsync<Exception>(() => _newsArticleService.CreateNewsArticle(requestModel));
+        Exception? exception = await Assert.ThrowsAsync<Exception>(() => _newsArticleService.CreateNewsArticle(requestModel));
 
         Assert.Equal("Could not insert news article", exception.Message);
     }

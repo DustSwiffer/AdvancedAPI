@@ -1,8 +1,4 @@
-﻿// <copyright file="DashboardController.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
-
-using AdvancedAPI.BaseControllers;
+﻿using AdvancedAPI.BaseControllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdvancedAPI.Controllers.Admin;

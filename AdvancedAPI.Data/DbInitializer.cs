@@ -13,8 +13,8 @@ namespace AdvancedAPI.Data
         /// </summary>
         public static async Task Initialize(IServiceProvider serviceProvider)
         {
-            var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
-            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            UserManager<User> userManager = serviceProvider.GetRequiredService<UserManager<User>>();
+            RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
             // Seed roles
             await SeedRoles(roleManager);

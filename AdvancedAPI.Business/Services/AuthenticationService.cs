@@ -5,7 +5,6 @@ using AdvancedAPI.Data.Models;
 using AdvancedAPI.Data.Repositories.Interfaces;
 using AdvancedAPI.Data.ViewModels.Authentication;
 using Business.Services.Interfaces;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Business.Services;
@@ -33,7 +32,7 @@ public class AuthenticationService : IAuthenticationService
         {
             List<Claim> authClaims = new()
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
 

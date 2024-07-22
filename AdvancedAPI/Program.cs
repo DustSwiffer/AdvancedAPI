@@ -1,9 +1,8 @@
 using System.Reflection;
 using System.Text;
+using AdvancedAPI.ActionFilters;
 using AdvancedAPI.Data;
 using AdvancedAPI.Data.Models;
-using AdvancedAPI.Data.Repositories;
-using AdvancedAPI.Data.Repositories.Interfaces;
 using Business;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -11,19 +10,20 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllers(
+    options =>
+    {
+        options.Filters.Add<LogLastSeenActionFilter>();
+    });
 
 // Services.
 builder.Services.AddBusinessServices();
 
 // Repositories.
-builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
-builder.Services.AddScoped<INewsArticleRepository, NewsArticleRepository>();
-builder.Services.AddScoped<IGenderRepository, GenderRepository>();
-
+builder.Services.AddDataRepositories();
 
 builder.Services.AddSwaggerGen(
     c =>
@@ -37,8 +37,8 @@ builder.Services.AddSwaggerGen(
                 Description = "The Advanced API of DustSwiffer",
             });
 
-        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
         c.IncludeXmlComments(xmlPath);
 
         c.AddSecurityDefinition(
@@ -74,7 +74,7 @@ builder.Services.AddSwaggerGen(
             });
     });
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AdvancedApiContext>(
     options =>

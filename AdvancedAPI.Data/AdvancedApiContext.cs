@@ -29,6 +29,11 @@ public class AdvancedApiContext : IdentityDbContext<User>
     public DbSet<Gender> Genders { get; set; }
 
     /// <summary>
+    /// LastSeen database objects.
+    /// </summary>
+    public DbSet<LastSeen> LastSeens { get; set; }
+
+    /// <summary>
     /// when creating models.
     /// </summary>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -44,12 +49,16 @@ public class AdvancedApiContext : IdentityDbContext<User>
             .HasOne(u => u.Gender)
             .WithMany()
             .HasForeignKey(u => u.GenderId);
-        
+
         modelBuilder.Entity<Gender>().HasData(
             new Gender { Id = 1, Name = "Male" },
             new Gender { Id = 2, Name = "Female" },
             new Gender { Id = 3, Name = "Non-Binary" },
-            new Gender { Id = 4, Name = "Other" }
-        );
+            new Gender { Id = 4, Name = "Other" });
+
+        modelBuilder.Entity<LastSeen>()
+            .HasOne(u => u.User)
+            .WithMany()
+            .HasForeignKey(u => u.UserId);
     }
 }
