@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Text;
 using AdvancedAPI.Data;
+using AdvancedAPI.Data.Models;
 using AdvancedAPI.Data.Repositories;
 using AdvancedAPI.Data.Repositories.Interfaces;
 using Business;
@@ -21,6 +22,8 @@ builder.Services.AddBusinessServices();
 // Repositories.
 builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
 builder.Services.AddScoped<INewsArticleRepository, NewsArticleRepository>();
+builder.Services.AddScoped<IGenderRepository, GenderRepository>();
+
 
 builder.Services.AddSwaggerGen(
     c =>
@@ -77,7 +80,7 @@ builder.Services.AddDbContext<AdvancedApiContext>(
     options =>
         options.UseSqlServer(connectionString));
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AdvancedApiContext>()
     .AddDefaultTokenProviders();
 
@@ -113,9 +116,9 @@ builder.Services.AddAuthorization(
             policy =>
                 policy.RequireRole("Admin"));
         options.AddPolicy(
-            "UserPolicy",
+            "UserOrAdmin",
             policy =>
-                policy.RequireRole("User"));
+                policy.RequireRole("User", "Admin"));
     });
 
 WebApplication app = builder.Build();

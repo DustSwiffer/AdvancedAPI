@@ -4,6 +4,7 @@ using AdvancedAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdvancedAPI.Data.Migrations
 {
     [DbContext(typeof(AdvancedApiContext))]
-    partial class AdvancedApiContextModelSnapshot : ModelSnapshot
+    [Migration("20240722171019_AddCustomPropertiesToApplicationUser")]
+    partial class AddCustomPropertiesToApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -8,7 +8,7 @@ namespace AdvancedAPI.Data;
 /// <summary>
 /// Database context.
 /// </summary>
-public class AdvancedApiContext : IdentityDbContext<IdentityUser>
+public class AdvancedApiContext : IdentityDbContext<User>
 {
     /// <summary>
     /// Constructor.
@@ -22,7 +22,12 @@ public class AdvancedApiContext : IdentityDbContext<IdentityUser>
     /// News article database objects.
     /// </summary>
     public DbSet<NewsArticle> NewsArticles { get; set; }
-    
+
+    /// <summary>
+    /// Gender database objects.
+    /// </summary>
+    public DbSet<Gender> Genders { get; set; }
+
     /// <summary>
     /// when creating models.
     /// </summary>
@@ -30,12 +35,21 @@ public class AdvancedApiContext : IdentityDbContext<IdentityUser>
     {
         base.OnModelCreating(modelBuilder);
 
-        // Ensure primary keys are defined for IdentityUserLogin
         modelBuilder.Entity<IdentityUserLogin<string>>(entity =>
         {
             entity.HasKey(e => new { e.LoginProvider, e.ProviderKey });
         });
 
-        // Additional model configurations
+        modelBuilder.Entity<User>()
+            .HasOne(u => u.Gender)
+            .WithMany()
+            .HasForeignKey(u => u.GenderId);
+        
+        modelBuilder.Entity<Gender>().HasData(
+            new Gender { Id = 1, Name = "Male" },
+            new Gender { Id = 2, Name = "Female" },
+            new Gender { Id = 3, Name = "Non-Binary" },
+            new Gender { Id = 4, Name = "Other" }
+        );
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using AdvancedAPI.Data.Models;
 using AdvancedAPI.Data.Repositories.Interfaces;
 using AdvancedAPI.Data.ViewModels.Authentication;
 using Business.Services.Interfaces;
@@ -27,7 +28,7 @@ public class AuthenticationService : IAuthenticationService
     /// <inheritdoc />
     public async Task<JwtSecurityToken?> Login(LoginRequestModel requestModel, CancellationToken ct = default)
     {
-        IdentityUser? user = await _identityRepository.GetUser(requestModel.Username);
+        User? user = await _identityRepository.GetUserByName(requestModel.Username);
         if (user != null && await _identityRepository.CheckPassword(user, requestModel.Password))
         {
             List<Claim> authClaims = new()
