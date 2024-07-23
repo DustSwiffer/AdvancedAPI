@@ -1,8 +1,4 @@
-﻿// <copyright file="RepositoryBase.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
-
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using AdvancedAPI.Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +9,7 @@ namespace AdvancedAPI.Data.Repositories;
 /// </summary>
 public class BaseRepository<T> : IBaseRepository<T> where T : class
 {
-    private readonly AdvancedApiContext _context;
+    protected readonly AdvancedApiContext _context;
     private readonly DbSet<T> _dbSet;
 
     /// <summary>

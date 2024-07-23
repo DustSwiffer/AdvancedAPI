@@ -13,15 +13,13 @@ namespace AdvancedAPI.Controllers;
 public class AuthenticationContoller : BaseController
 {
     private readonly IAuthenticationService _authenticationService;
-    private readonly IConfiguration _configuration;
 
     /// <summary>
     /// Constructor.
     /// </summary>
-    public AuthenticationContoller(IAuthenticationService authenticationService, IConfiguration configuration)
+    public AuthenticationContoller(IAuthenticationService authenticationService)
     {
         _authenticationService = authenticationService;
-        _configuration = configuration;
     }
 
     /// <summary>

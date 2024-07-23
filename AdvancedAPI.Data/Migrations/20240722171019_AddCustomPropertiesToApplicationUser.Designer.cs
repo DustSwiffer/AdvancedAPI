@@ -4,6 +4,7 @@ using AdvancedAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdvancedAPI.Data.Migrations
 {
     [DbContext(typeof(AdvancedApiContext))]
-    partial class AdvancedApiContextModelSnapshot : ModelSnapshot
+    [Migration("20240722171019_AddCustomPropertiesToApplicationUser")]
+    partial class AddCustomPropertiesToApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,28 +61,6 @@ namespace AdvancedAPI.Data.Migrations
                             Id = 4,
                             Name = "Other"
                         });
-                });
-
-            modelBuilder.Entity("AdvancedAPI.Data.Models.LastSeen", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("LastSeens");
                 });
 
             modelBuilder.Entity("AdvancedAPI.Data.Models.NewsArticle", b =>
@@ -315,17 +295,6 @@ namespace AdvancedAPI.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("AdvancedAPI.Data.Models.LastSeen", b =>
-                {
-                    b.HasOne("AdvancedAPI.Data.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("AdvancedAPI.Data.Models.User", b =>

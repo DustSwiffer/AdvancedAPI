@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AdvancedAPI.Data.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace AdvancedAPI.Data
 {
@@ -12,7 +13,7 @@ namespace AdvancedAPI.Data
         /// </summary>
         public static async Task Initialize(IServiceProvider serviceProvider)
         {
-            UserManager<IdentityUser> userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            UserManager<User> userManager = serviceProvider.GetRequiredService<UserManager<User>>();
             RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
             // Seed roles
@@ -44,15 +45,18 @@ namespace AdvancedAPI.Data
         /// <summary>
         /// Seeding admin user into the database.
         /// </summary>
-        private static async Task SeedAdminUser(UserManager<IdentityUser> userManager)
+        private static async Task SeedAdminUser(UserManager<User> userManager)
         {
-            IdentityUser? adminUser = await userManager.FindByEmailAsync("admin@example.com");
+            User? adminUser = await userManager.FindByEmailAsync("admin@example.com");
             if (adminUser == null)
             {
-                adminUser = new IdentityUser
+                adminUser = new User
                 {
                     UserName = "admin@example.com",
                     Email = "admin@example.com",
+                    DateOfBirth = new DateTime(1980, 1, 1),
+                    DisplayName = "Admin User",
+                    GenderId = 1 // Assuming 1 is the ID for Male
                 };
 
                 IdentityResult? result = await userManager.CreateAsync(adminUser, "P@ssw0rd");
@@ -66,21 +70,24 @@ namespace AdvancedAPI.Data
         /// <summary>
         /// Seeding user user into the database.
         /// </summary>
-        private static async Task SeedUserUser(UserManager<IdentityUser> userManager)
+        private static async Task SeedUserUser(UserManager<User> userManager)
         {
-            IdentityUser? adminUser = await userManager.FindByEmailAsync("user@example.com");
-            if (adminUser == null)
+            User? userUser = await userManager.FindByEmailAsync("user@example.com");
+            if (userUser == null)
             {
-                adminUser = new IdentityUser
+                userUser = new User
                 {
                     UserName = "user@example.com",
                     Email = "user@example.com",
+                    DateOfBirth = new DateTime(1990, 1, 1),
+                    DisplayName = "Regular User",
+                    GenderId = 2 // Assuming 2 is the ID for Female
                 };
 
-                IdentityResult? result = await userManager.CreateAsync(adminUser, "P@ssw0rd");
+                IdentityResult? result = await userManager.CreateAsync(userUser, "P@ssw0rd");
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(adminUser, "User");
+                    await userManager.AddToRoleAsync(userUser, "User");
                 }
             }
         }
