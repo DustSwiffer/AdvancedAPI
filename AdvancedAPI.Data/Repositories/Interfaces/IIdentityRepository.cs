@@ -16,7 +16,7 @@ public interface IIdentityRepository
     /// <summary>
     /// Getting user from user manager by id.
     /// </summary>
-    public Task<User> GetUserById(string userId);
+    public Task<User?> GetUserById(string userId);
 
     /// <summary>
     /// Checks the password of the user with user manager.

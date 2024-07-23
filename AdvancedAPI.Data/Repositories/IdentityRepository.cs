@@ -21,7 +21,7 @@ public class IdentityRepository : IIdentityRepository
     public async Task<User> GetUserByName(string userName) => await _userManager.FindByNameAsync(userName);
 
     /// <inheritdoc />
-    public async Task<User> GetUserById(string userId) => await _userManager.FindByIdAsync(userId);
+    public async Task<User?> GetUserById(string userId) => await _userManager.FindByIdAsync(userId);
 
     /// <inheritdoc />
     public async Task<bool> CheckPassword(User user, string password) =>
