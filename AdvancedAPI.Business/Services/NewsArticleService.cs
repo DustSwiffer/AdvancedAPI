@@ -65,4 +65,16 @@ public class NewsArticleService : INewsArticleService
 
         return false;
     }
+
+    /// <summary>
+    /// Getting list of all news articles.
+    /// </summary>
+    public async Task<List<NewsArticleResponseModel>> GetList()
+    {
+        IEnumerable<NewsArticle> newsArticles = await _newsArticleRepository.GetAllAsync();
+
+        List<NewsArticleResponseModel> mapped = _mapper.Map<IEnumerable<NewsArticleResponseModel>>(newsArticles).ToList();
+
+        return mapped;
+    }
 }

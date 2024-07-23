@@ -16,6 +16,7 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<NewsArticleRequestModel, NewsArticle>();
+        CreateMap<NewsArticle, NewsArticleResponseModel>();
         CreateMap<User, UserProfileResponseModel>(MemberList.None)
             .ForMember(d => d.Gender, opt => opt.MapFrom(s => s.Gender.Name));
     }

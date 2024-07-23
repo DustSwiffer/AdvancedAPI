@@ -2,7 +2,7 @@
 using Business.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace AdvancedAPI.ActionFilters;
+namespace AdvancedAPI.Filters;
 
 /// <summary>
 /// Last seen action filter.

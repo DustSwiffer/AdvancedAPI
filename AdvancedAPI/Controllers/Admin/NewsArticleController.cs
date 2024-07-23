@@ -8,7 +8,6 @@ namespace AdvancedAPI.Controllers.Admin;
 /// <summary>
 /// News article admin controller.
 /// </summary>
-[Route("news")]
 public class NewsArticleController : AdminBaseController
 {
     private readonly INewsArticleService _newsArticleService;

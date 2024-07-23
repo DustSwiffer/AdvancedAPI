@@ -8,7 +8,6 @@ namespace AdvancedAPI.Controllers.User;
 /// <summary>
 /// User endpoints
 /// </summary>
-[Route("user")]
 public class UserController : UserBaseController
 {
     private readonly IUserService _userService;

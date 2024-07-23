@@ -9,15 +9,14 @@ namespace AdvancedAPI.Controllers;
 /// <summary>
 /// Authentication endpoints.
 /// </summary>
-[Microsoft.AspNetCore.Components.Route("authentication")]
-public class AuthenticationContoller : BaseController
+public class AuthenticationController : BaseController
 {
     private readonly IAuthenticationService _authenticationService;
 
     /// <summary>
     /// Constructor.
     /// </summary>
-    public AuthenticationContoller(IAuthenticationService authenticationService)
+    public AuthenticationController(IAuthenticationService authenticationService)
     {
         _authenticationService = authenticationService;
     }

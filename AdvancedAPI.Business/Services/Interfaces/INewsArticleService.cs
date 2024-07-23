@@ -16,4 +16,6 @@ public interface INewsArticleService
     /// Deletes the news article from the database.
     /// </summary>
     public Task<bool> DeleteNewsArticle(int id);
+
+    public Task<List<NewsArticleResponseModel>> GetList();
 }

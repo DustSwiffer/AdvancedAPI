@@ -1,8 +1,8 @@
 using System.Reflection;
 using System.Text;
-using AdvancedAPI.ActionFilters;
 using AdvancedAPI.Data;
 using AdvancedAPI.Data.Models;
+using AdvancedAPI.Filters;
 using Business;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -28,6 +28,7 @@ builder.Services.AddDataRepositories();
 builder.Services.AddSwaggerGen(
     c =>
     {
+        c.DocumentFilter<LowercaseDocumentFilter>();
         c.SwaggerDoc(
             "v1",
             new OpenApiInfo

@@ -7,7 +7,7 @@ namespace AdvancedAPI.BaseControllers;
 /// Base controller.
 /// </summary>
 [ApiController]
-[Route("api")]
+[Route("api/[controller]")]
 public class BaseController : ControllerBase
 {
     /// <summary>

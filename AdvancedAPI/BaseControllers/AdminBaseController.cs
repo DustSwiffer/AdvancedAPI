@@ -7,7 +7,7 @@ namespace AdvancedAPI.BaseControllers;
 /// Controller for admin related endpoints.
 /// </summary>
 [Authorize(Policy = "AdminPolicy")]
-[Route("admin")]
+[Route("api/admin/[controller]")]
 public class AdminBaseController : BaseController
 {
     /// <summary>
