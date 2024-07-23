@@ -17,6 +17,7 @@ public static class ServiceExtension
 
         services.AddScoped<IAuthenticationService, AuthenticationService>();
         services.AddScoped<INewsArticleService, NewsArticleService>();
+        services.AddScoped<IUserService, UserService>();
 
         return services;
     }

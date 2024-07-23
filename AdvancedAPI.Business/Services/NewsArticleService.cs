@@ -26,7 +26,7 @@ public class NewsArticleService : INewsArticleService
     /// <inheritdoc />
     public async Task<bool> CreateNewsArticle(NewsArticleRequestModel requestModel)
     {
-        var mapped = _mapper.Map<NewsArticle>(requestModel);
+        NewsArticle? mapped = _mapper.Map<NewsArticle>(requestModel);
         mapped.ReleaseDate = DateTime.Now;
 
         try
