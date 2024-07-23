@@ -127,4 +127,60 @@ public class UserServiceTests
 
         Assert.Equal(lastSeenResult.DateTime.ToString(CultureInfo.InvariantCulture), response.LastSeen);
     }
+
+    /// <summary>
+    /// Tests if UpdateLastSeen calls the AddAsync of the LastSeen Repo just once.
+    /// </summary>
+    [Fact]
+    public async Task UpdateLastSeenCreatesNew()
+    {
+        string userId = "valid-user-id";
+        _lastSeenRepository.Setup(lsr => lsr.GetByUserId(It.IsAny<string>())).ReturnsAsync((LastSeen?)null);
+
+        await _UserService.UpdateLastSeen(userId);
+
+        _lastSeenRepository.Verify(lsr => lsr.AddAsync(It.IsAny<LastSeen>()), Times.Once);
+    }
+
+    /// <summary>
+    /// Tests if UpdateLastSeen calls the Update of the LastSeen Repo just once.
+    /// </summary>
+    [Fact]
+    public async Task UpdateLastSeenUpdates()
+    {
+        string userId = "valid-user-id";
+        LastSeen lastSeenResult = new LastSeen
+        {
+            Id = 1,
+            UserId = userId,
+            DateTime = DateTime.Now,
+        };
+
+        _lastSeenRepository.Setup(lsr => lsr.GetByUserId(It.IsAny<string>())).ReturnsAsync(lastSeenResult);
+
+        await _UserService.UpdateLastSeen(userId);
+
+        _lastSeenRepository.Verify(lsr => lsr.Update(It.IsAny<LastSeen>()), Times.Once);
+    }
+
+    /// <summary>
+    /// Tests if UpdateLastSeen calls the Saves the database changes.
+    /// </summary>
+    [Fact]
+    public async Task UpdateLastSeenSaves()
+    {
+        string userId = "valid-user-id";
+        LastSeen lastSeenResult = new LastSeen
+        {
+            Id = 1,
+            UserId = userId,
+            DateTime = DateTime.Now,
+        };
+
+        _lastSeenRepository.Setup(lsr => lsr.GetByUserId(It.IsAny<string>())).ReturnsAsync(lastSeenResult);
+
+        await _UserService.UpdateLastSeen(userId);
+
+        _lastSeenRepository.Verify(lsr => lsr.SaveAsync(), Times.Once);
+    }
 }

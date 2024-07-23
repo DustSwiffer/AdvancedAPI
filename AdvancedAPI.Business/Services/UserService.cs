@@ -54,8 +54,7 @@ public class UserService : IUserService
     /// <inheritdoc />
     public async Task UpdateLastSeen(string userId)
     {
-        IEnumerable<LastSeen> lastSeens = await _lastSeenRepository.FindAsync(e => e.UserId == userId);
-        LastSeen? lastSeen = lastSeens.FirstOrDefault();
+        LastSeen? lastSeen = await _lastSeenRepository.GetByUserId(userId);
 
         if (lastSeen != null)
         {
