@@ -24,7 +24,7 @@ Here’s what’s in store with this boilerplate:
   - **AdvancedAPI.Data:** Models and repositories for data handling.
   - **AdvancedAPI.Tests:** Unit tests to ensure everything works smoothly.
 
-##🚧 Learning by Doing
+## 🚧 Learning by Doing
 This boilerplate is designed to be a hands-on learning experience for me. It’s intentionally set up with potential mistakes and quirks to help you learn by doing:
 
 - **Spot a Mistake?** Perfect! It’s a great opportunity to dig in and understand what went wrong. Your observations can be valuable for learning.
