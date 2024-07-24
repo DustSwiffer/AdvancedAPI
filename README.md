@@ -31,7 +31,7 @@ This boilerplate is designed to be a hands-on learning experience for me. It’s
 
 - **Explore and Experiment:** Feel free to modify, break, and fix things. The goal is to learn and grow through exploration.
 
-📦 Getting Started
+## 📦 Getting Started
 1. **Clone the Repo:** Get your own copy of the project.
 
 2. **Configure the AppSettings:** Open appsettings.json and set it up according to your environment. This is where you customize your setup.
